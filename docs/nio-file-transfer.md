@@ -50,3 +50,13 @@ allow the selected TCP port through the host firewall. Keep the demo on a
 trusted network; authentication and encryption are provided by separate team
 features and this component does not claim to provide either.
 
+## Integration boundary
+
+The client-side chat feature can call `NioFileTransferClient.send(path, host,
+port)` after both users agree on a transfer. The receiving side can pass each
+accepted `SocketChannel` to `NioFileTransferReceiver.receive(channel, folder)`.
+The method returns the transfer ID, safe file name, and received size for UI
+status. The reusable receiver performs one transfer per connection; the server
+owner should dispatch accepted channels to the project's worker pool if the
+application needs simultaneous transfers.
+
