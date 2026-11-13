@@ -5,19 +5,27 @@ A Java Network Programming group project demonstrating networking concepts from 
 ## Project structure
 
 ```text
-backend/                 Java 17 Maven project
-  src/main/java/com/campusconnect/
-    common/              Shared message and protocol contracts
-    server/tcp/           Concurrent TCP chat server
-    client/tcp/           TCP client networking layer
-    presence/udp/         UDP online-presence service
-    files/nio/            NIO file transfer
-    security/tls/         TLS socket configuration
-  src/test/java/          Automated tests
-frontend/                 Optional UI assets or client notes
-docs/                     Protocol and setup documentation
-.github/workflows/        CI build workflow
+Campus-connect-network-programming/
+├── backend/                              Java 17 Maven application
+│   ├── pom.xml
+│   └── src/
+│       ├── main/java/com/campusconnect/
+│       │   ├── common/                   Shared message and protocol contracts
+│       │   ├── server/tcp/               Concurrent TCP chat server
+│       │   ├── client/tcp/               TCP client networking layer
+│       │   ├── client/ui/                Swing desktop frontend
+│       │   ├── presence/udp/             UDP presence service
+│       │   ├── files/nio/                NIO transfer protocol and client/server
+│       │   └── security/tls/              TLS socket configuration
+│       └── test/java/                    Automated tests
+├── docs/                                 Protocol and setup documentation
+├── .github/workflows/                    CI build workflow
+├── .gitignore
+└── README.md
 ```
+
+The Task 4 Swing frontend is `NioFileTransferApp`; it is part of the Java Maven
+application, so no separate frontend framework or build is needed.
 
 ## Stack
 
@@ -26,7 +34,7 @@ docs/                     Protocol and setup documentation
 - UDP datagrams for online presence only
 - Java NIO channels for file transfer
 - TLS sockets for secure TCP connections
-- Optional JavaFX UI can be added separately from the networking layer
+- Optional Swing UI for the NIO file sender, separate from the networking layer
 
 ## Start
 
