@@ -1,0 +1,20 @@
+# Java / Maven
+target/
+*.class
+*.jar
+
+# IDE settings
+.idea/
+.vscode/
+*.iml
+
+# Local certificates and secrets
+*.key
+*.p12
+*.jks
+*.truststore
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
