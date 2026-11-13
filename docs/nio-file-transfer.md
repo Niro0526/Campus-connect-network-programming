@@ -24,3 +24,29 @@ The receiver rejects invalid signatures, versions, unsafe names and files over
 final name after receiving the declared byte count. Existing files are not
 overwritten. A disconnect during transfer removes the partial file.
 
+## Run the demo
+
+Build from the repository root:
+
+```sh
+mvn -f backend/pom.xml package
+```
+
+Start the server in one terminal. It stores successful transfers in
+`received-files` under the current working directory:
+
+```sh
+java -cp backend/target/classes com.campusconnect.files.nio.NioFileTransferDemo server 0.0.0.0 5050
+```
+
+Send a file from another terminal/device:
+
+```sh
+java -cp backend/target/classes com.campusconnect.files.nio.NioFileTransferDemo client 127.0.0.1 5050 ./sample.pdf
+```
+
+For a LAN demo, replace `127.0.0.1` with the server computer's reachable IP and
+allow the selected TCP port through the host firewall. Keep the demo on a
+trusted network; authentication and encryption are provided by separate team
+features and this component does not claim to provide either.
+
