@@ -29,7 +29,7 @@ overwritten. A disconnect during transfer removes the partial file.
 Build from the repository root:
 
 ```sh
-mvn -f backend/pom.xml package
+mvn -B package
 ```
 
 Start the server in one terminal. It stores successful transfers in
@@ -44,6 +44,16 @@ Send a file from another terminal/device:
 ```sh
 java -cp backend/target/classes com.campusconnect.files.nio.NioFileTransferDemo client 127.0.0.1 5050 ./sample.pdf
 ```
+
+To demonstrate the sender with a graphical frontend, leave the receiver running
+and launch the Swing app in another terminal:
+
+```sh
+java -cp "frontend/target/classes;backend/target/classes" com.campusconnect.client.ui.NioFileTransferApp
+```
+
+Choose a file, enter the receiver host and port, then select **Send file**. The
+window shows the transfer status; the receiver terminal reports the saved file.
 
 For a LAN demo, replace `127.0.0.1` with the server computer's reachable IP and
 allow the selected TCP port through the host firewall. Keep the demo on a

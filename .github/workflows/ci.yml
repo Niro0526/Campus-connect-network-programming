@@ -22,4 +22,4 @@ jobs:
           java-version: '17'
           cache: maven
       - name: Build and run tests
-        run: mvn -B -f backend/pom.xml verify
+        run: mvn -B verify
