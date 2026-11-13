@@ -6,26 +6,30 @@ A Java Network Programming group project demonstrating networking concepts from 
 
 ```text
 Campus-connect-network-programming/
-├── backend/                              Java 17 Maven application
+├── pom.xml                               Maven parent and reactor build
+├── backend/                              Java 17 networking module
 │   ├── pom.xml
 │   └── src/
 │       ├── main/java/com/campusconnect/
 │       │   ├── common/                   Shared message and protocol contracts
 │       │   ├── server/tcp/               Concurrent TCP chat server
 │       │   ├── client/tcp/               TCP client networking layer
-│       │   ├── client/ui/                Swing desktop frontend
 │       │   ├── presence/udp/             UDP presence service
 │       │   ├── files/nio/                NIO transfer protocol and client/server
 │       │   └── security/tls/              TLS socket configuration
 │       └── test/java/                    Automated tests
+├── frontend/                             Separate Java Swing UI module
+│   ├── pom.xml                            Depends on campus-connect-backend
+│   └── src/main/java/com/campusconnect/client/ui/
+│       └── NioFileTransferApp.java         NIO file-sender window
 ├── docs/                                 Protocol and setup documentation
 ├── .github/workflows/                    CI build workflow
 ├── .gitignore
 └── README.md
 ```
 
-The Task 4 Swing frontend is `NioFileTransferApp`; it is part of the Java Maven
-application, so no separate frontend framework or build is needed.
+The frontend and backend are separate Maven modules. The frontend depends on the
+backend module's NIO client; the parent POM builds them in dependency order.
 
 ## Stack
 
@@ -38,7 +42,7 @@ application, so no separate frontend framework or build is needed.
 
 ## Start
 
-Install JDK 17 and Maven, then run `mvn -f backend/pom.xml verify`. Each feature owner should work in their assigned package and coordinate protocol changes through `docs/protocol.md`.
+Install JDK 17 and Maven, then run `mvn -B verify` from the repository root to build both modules. Each feature owner should work in their assigned package and coordinate protocol changes through `docs/protocol.md`.
 
 Task 4 NIO file-transfer protocol and demo: see [`docs/nio-file-transfer.md`](docs/nio-file-transfer.md).
 
