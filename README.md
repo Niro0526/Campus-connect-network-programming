@@ -32,6 +32,8 @@ docs/                     Protocol and setup documentation
 
 Install JDK 17 and Maven, then run `mvn -f backend/pom.xml verify`. Each feature owner should work in their assigned package and coordinate protocol changes through `docs/protocol.md`.
 
+Task 4 NIO file-transfer protocol and demo: see [`docs/nio-file-transfer.md`](docs/nio-file-transfer.md).
+
 ## Team workflow
 
 Use `develop` as the integration branch. Create a feature branch from `develop`, link your pull request to the matching GitHub issue, and merge into `develop` after review. Do not commit directly to `develop` after the scaffold is in place.

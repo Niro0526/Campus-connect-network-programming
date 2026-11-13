@@ -19,7 +19,7 @@ The UDP presence feature is separate from chat. Keep datagrams small and non-sen
 
 ## NIO file transfer
 
-File transfer uses a TCP connection and NIO channels, not presence datagrams. Agree on transfer metadata (`transferId`, safe basename, byte length) before streaming bytes. Reject path traversal and enforce a documented maximum file size.
+File transfer uses a TCP connection and NIO channels, not presence datagrams. The Task 4 implementation uses one connection per file and the binary `CCFT` v1 header documented in `docs/nio-file-transfer.md` (transfer UUID, safe basename, byte length) before streaming bytes. Reject path traversal and enforce a 25 MiB maximum file size.
 
 ## TLS
 
