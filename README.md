@@ -46,6 +46,8 @@ Install JDK 17 and Maven, then run `mvn -B verify` from the repository root to b
 
 Task 4 NIO file-transfer protocol and demo: see [`docs/nio-file-transfer.md`](docs/nio-file-transfer.md).
 
+Task 5 TLS secure chat sockets and demo: see [`docs/tls-setup.md`](docs/tls-setup.md).
+
 ## Team workflow
 
 Use `develop` as the integration branch. Create a feature branch from `develop`, link your pull request to the matching GitHub issue, and merge into `develop` after review. Do not commit directly to `develop` after the scaffold is in place.

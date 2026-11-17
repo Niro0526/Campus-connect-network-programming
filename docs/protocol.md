@@ -25,6 +25,8 @@ File transfer uses a TCP connection and NIO channels, not presence datagrams. Th
 
 TLS wraps the TCP connection between client and server. TLS must not change the application message format. Client certificate validation stays enabled; report handshake failures without exposing secrets.
 
+The Task 5 implementation provides `TlsServerSocketFactory` and `TlsClientSocketFactory` in `com.campusconnect.security.tls`, enforcing TLS 1.2 and TLS 1.3 with PKCS12 keystore/truststore configuration. See [`docs/tls-setup.md`](tls-setup.md) for certificate management, interface specifications, and demo steps.
+
 ## Ownership boundaries
 
 - `server/tcp`: accept clients, worker pool, rooms, broadcast, disconnect cleanup.
