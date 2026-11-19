@@ -46,6 +46,23 @@ Install JDK 17 and Maven, then run `mvn -B verify` from the repository root to b
 
 Task 4 NIO file-transfer protocol and demo: see [`docs/nio-file-transfer.md`](docs/nio-file-transfer.md).
 
+## TCP chat client
+
+The member 1 client is provided by
+[`TcpChatClient`](backend/src/main/java/com/campusconnect/client/tcp/TcpChatClient.java).
+It connects to a chat server, joins one room, sends newline-delimited JSON chat
+messages, dispatches incoming `CHAT` and `ERROR` messages to a
+[`ChatClientListener`](backend/src/main/java/com/campusconnect/client/tcp/ChatClientListener.java),
+and sends `LEAVE` before closing when possible:
+
+```java
+try (TcpChatClient client = new TcpChatClient("127.0.0.1", 6060, listener)) {
+    client.connect();
+    client.joinRoom("alice", "study-room");
+    client.sendMessage("Hello everyone");
+}
+```
+
 ## Team workflow
 
 Use `develop` as the integration branch. Create a feature branch from `develop`, link your pull request to the matching GitHub issue, and merge into `develop` after review. Do not commit directly to `develop` after the scaffold is in place.
